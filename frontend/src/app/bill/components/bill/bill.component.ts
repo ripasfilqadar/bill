@@ -60,12 +60,14 @@ export class BillComponent extends DataTableBase implements OnInit {
   }
 
   onEditClick(){
-    const dialogRef = this.dialog.open(BillFormComponent, this.selected[0])
+    const dialogRef = this.dialog.open(BillFormComponent, {
+      data: this.selected[0]
+    })
     dialogRef.afterClosed().subscribe((resp) =>{
       if(isNullOrUndefined(resp)) {
         return
       }
-      this.service.update(resp, resp.id).subscribe(() => {
+      this.service.update(resp, this.selected[0].id).subscribe(() => {
         this.getData()
       })
     })

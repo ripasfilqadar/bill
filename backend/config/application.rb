@@ -16,26 +16,26 @@ module DocSearch
     config.middleware.use Rack::Cors do
       allow do
         origins '*'
-        resource '/*',
+        resource '*',
           :headers => :any,
-          :methods => [:get, :put, :patch, :options],
-          :max_age => 15
+          :methods => [:get, :put, :patch, :post, :delete]
       end
     end
+
     config.middleware.insert_before 0, Rack::Cors do
       allow do
-        origins 'localhost:3000', /https*:\/\/.*?bloopist\.com/
+        origins '*'
         resource '*', :headers => :any, :methods => :any
       end
     end
 
     config.generators do |g|
-    g.orm :active_record
+      g.orm :active_record
+    end
 
 	end
 
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration should go into files in config/initializers
     # -- all .rb files in that directory are automatically loaded.
-  end
 end

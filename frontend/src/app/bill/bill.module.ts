@@ -6,6 +6,7 @@ import { FormsModule } from '@angular/forms';
 import { RouterModule, Router, Routes } from '@angular/router';
 import { DataTableImporter } from '../shared/models/mat-material-importer';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatSelectModule } from '@angular/material';
 
 
 const routes: Routes = [{
@@ -18,6 +19,7 @@ const routes: Routes = [{
     FormsModule,
     RouterModule.forRoot(routes),
   ...DataTableImporter,
+    MatSelectModule
   ],
   declarations: [BillFormComponent, BillComponent],
   entryComponents: [BillFormComponent]

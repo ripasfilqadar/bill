@@ -1,3 +1,29 @@
-<p>
-  bill-form works!
-</p>
+
+<div class="dialog-content-wrapper" style="min-width: 400px;">
+  <div mat-dialog-title class="mat-accent-bg p-16 m-0" fxLayout="row" fxLayoutAlign="space-between center">
+    <span class="title dialog-title">{{state}} Page</span>
+    <button aria-label="Close dialog" mat-icon-button (click)="onNoClick()">
+      <mat-icon>close</mat-icon>
+    </button>
+  </div>
+  <div mat-dialog-content class="p-24 m-0" style="max-width:450px !important;">
+    <form [formGroup]="formGroup" fxLayout="column" fxLayoutAlign="start stretch">
+    <mat-form-field>
+      <input matInput formControlName='name'  placeholder='Name'/>
+    </mat-form-field>
+
+    <mat-form-field>
+      <input matInput formControlName='price'  placeholder='Price'/>
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-select placeholder="Tax Code" formControlName='tax_code' >
+        <mat-option *ngFor="let bill of billTypes" [value]="bill.value">{{bill.name}}</mat-option>
+      </mat-select>
+    </mat-form-field>
+    <div fxLayout="row" fxLayoutAlign="end center">
+        <button mat-raised-button color="primary" [disabled]="formGroup?.invalid" (click)="onOkClick()" >Save</button>
+      </div>
+    </form>
+  </div>
+</div>

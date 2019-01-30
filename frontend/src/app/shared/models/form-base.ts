@@ -27,7 +27,7 @@ export class FormBase {
     for (const x of this.formAttribute) {
       tempValueData[x.name] = this.data[x.name]
     }
-		this.formGroup.setValue(tempValueData)
+    this.formGroup.setValue(tempValueData)
 	}
 
   createForm() {
