@@ -1,0 +1,49 @@
+version: '3'
+
+services:
+  backend:
+    build:
+      context: ./backend
+    image: backend
+    restart: on-failure
+    ports:
+      - 5000:5000
+    volumes:
+      - .:/backend
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "999k"
+    networks:
+      - bill
+    dns:
+      - 8.8.8.8
+      - 9.9.9.9
+  frontend:
+    build:
+      context: ./frontend
+    image: frontend
+    restart: on-failure
+    ports:
+      - 80:80
+    volumes:
+      - .:/frontend
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "999k"
+    networks:
+      - bill
+    dns:
+      - 8.8.8.8
+      - 9.9.9.9
+
+networks:
+  bill:
+    driver: "bridge"
+
+volumes:
+  backend:
+    driver: 'local'
+  frontend:
+    driver: "local"

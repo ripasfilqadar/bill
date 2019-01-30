@@ -29,35 +29,19 @@ gem 'jbuilder', '~> 2.5'
 # Use ActiveModel has_secure_password
 
 gem "rubyzip", '~> 1.1.7'
-gem 'elasticsearch-model', github: 'elastic/elasticsearch-rails', branch: '5.x'
-gem 'elasticsearch-rails', github: 'elastic/elasticsearch-rails', branch: '5.x'
 gem 'paperclip', '~> 5.2.0'
-gem 'searchkick'
-gem 'authlogic'
-gem 'backburner'
-gem 'mysql2'
 gem 'mongoid-autoinc' #auto-increment mongo
-gem 'hiredis'
-gem 'redis'
 gem 'mongoid'
 gem 'bcrypt'
-gem 'haml-rails'
-gem 'memcached_store'
 gem 'activemodel'
-gem 'simple_form'
-gem "pundit"
 gem 'bootstrap-sass', '~> 3.3.7'
 gem 'font-awesome-sass'
 gem 'autoprefixer-rails'
 gem 'sprockets-rails'
 gem 'jquery-rails'
 gem 'contracts'
-gem 'docx', '~> 0.2.07', :require => ["docx"]
-gem "pdftotext"
-gem "pdf-reader"
-gem 'adminlte-rails'
-gem 'adminlte2-rails'
 gem 'rack-cors', :require => 'rack/cors'
+gem 'simple_form'
 
 
 # Use Capistrano for deployment
