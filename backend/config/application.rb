@@ -8,14 +8,30 @@ Bundler.require(*Rails.groups)
 
 module DocSearch
   class Application < Rails::Application
-    
-      
+
+
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 5.1
     config.time_zone = 'Jakarta'
+    config.middleware.use Rack::Cors do
+      allow do
+        origins '*'
+        resource '/*',
+          :headers => :any,
+          :methods => [:get, :put, :patch, :options],
+          :max_age => 15
+      end
+    end
+    config.middleware.insert_before 0, Rack::Cors do
+      allow do
+        origins 'localhost:3000', /https*:\/\/.*?bloopist\.com/
+        resource '*', :headers => :any, :methods => :any
+      end
+    end
 
     config.generators do |g|
-	  g.orm :active_record
+    g.orm :active_record
+
 	end
 
     # Settings in config/environments/* take precedence over those specified here.

@@ -1,0 +1,35 @@
+<div class="toolbar px-24 py-8" fxLayout="row" fxLayoutAlign="space-between center">
+  <div class="content-toolbar" fxFlex="60" fxLayout="row" fxLayoutAlign="start center">
+      <button  matTooltip="Add" mat-mini-fab color="accent" (click)="onAddClick()">
+          <mat-icon>add</mat-icon>
+      </button>
+
+      <div *ngIf="showButton()" class="toolbar-separator"></div>
+      <button *ngIf="showButton()" matTooltip="Edit" mat-icon-button color="primary" (click)="onEditClick()">
+        <mat-icon>edit</mat-icon>
+    </button>
+      <button *ngIf="showButton()" matTooltip="Delete" mat-icon-button color="warn" (click)="onDeleteClick()">
+          <mat-icon>delete</mat-icon>
+      </button>
+  </div>
+</div>
+<div class="content p-24">
+<ngx-datatable #table
+               class="material"
+               [rows]="datas"
+               [columns]="columns"
+               [columnMode]="'force'"
+               [rowHeight]="'40'"
+               [selected]="selected"
+               [selectionType]="'single'"
+               [selectCheck]="singleSelectCheck"
+               (select)='onSelect($event)'
+               [headerHeight]="50"
+               [footerHeight]="50"
+               [limit]="100">
+</ngx-datatable>
+
+<h6>Price Subtotal: {{billData.price_sub_total}}</h6>
+<h6>Tax Subtotal: {{billData.tax_sub_total}}</h6>
+<h6>Grand Total: {{billData.total}}</h6>
+</div>

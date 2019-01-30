@@ -3,6 +3,7 @@
     def serialize_bill(bill)
       bill.tax_code_type = bill.tax_code.camelize.constantize.new bill
       {
+        id: bill.id,
         name: bill.name,
         tax_code: Bill.tax_code_int(bill),
         type: bill.tax_code_type.type,
