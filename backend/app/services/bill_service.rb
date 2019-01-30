@@ -6,7 +6,7 @@
         name: bill.name,
         tax_code: Bill.tax_code_int(bill),
         type: bill.tax_code_type.type,
-        refundable: bill.tax_code_type.refundable,
+        refundable: bill.tax_code_type.refundable ? 'Yes' : 'No',
         price: bill.price,
         tax: bill.tax_code_type.tax,
         amount: bill.tax_code_type.tax + bill.price
