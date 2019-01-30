@@ -4,8 +4,11 @@ class Bill < ApplicationRecord
     tobacco: 2,
     entertainment: 3
   }
+  validates_presence_of :name, :tax_code, :price
+  validates :price, numericality: { only_integer: true, greater_than: 10 }
 
   attr_accessor :tax_code_type
+
 
   class << self
     def tax_code_int(bill)

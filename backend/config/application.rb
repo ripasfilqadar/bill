@@ -13,14 +13,6 @@ module DocSearch
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 5.1
     config.time_zone = 'Jakarta'
-    config.middleware.use Rack::Cors do
-      allow do
-        origins '*'
-        resource '*',
-          :headers => :any,
-          :methods => [:get, :put, :patch, :post, :delete]
-      end
-    end
 
     config.middleware.insert_before 0, Rack::Cors do
       allow do
