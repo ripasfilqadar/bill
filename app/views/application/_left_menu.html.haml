@@ -1,0 +1,22 @@
+%ul.sidebar-menu
+	%li.header Admin
+
+	%li.active
+		=link_to 'Kategori', category_index_path
+		%i.fa.fa-link
+		%span
+		
+	%li
+		%a{href: "#"}
+			%i.fa.fa-link
+			%span Another Link
+	%li.treeview
+		%a{href: "#"}
+			%i.fa.fa-link
+			%span Multilevel
+			%i.fa.fa-angle-left.pull-right
+		%ul.treeview-menu
+			%li
+				%a{href: "#"} Link in level 2
+			%li
+				%a{href: "#"} Link in level 2

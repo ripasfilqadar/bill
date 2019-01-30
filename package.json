@@ -1,0 +1,7 @@
+{
+  "name": "doc_search",
+  "private": true,
+  "dependencies": {
+  	"admin-lte": "2.3.5"
+  }
+}

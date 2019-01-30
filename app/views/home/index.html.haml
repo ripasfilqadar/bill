@@ -1,0 +1,12 @@
+= form_tag document_index_path, method: 'get', class: 'simple_form profile-setting' do
+	.page-content
+		%fieldset.form-field-item
+			%dl
+				%dt Cari Dokumen
+				%dd
+					%input{type: 'text', name: 'keyword', autofocus: 'autofocus'}
+		%fieldset.form-field-item
+			%dl
+				%dt
+				%dd
+					%input{type: 'submit', value: 'search', class: "btn btn--blue btn--medium btn--block"}

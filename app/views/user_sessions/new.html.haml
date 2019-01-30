@@ -1,0 +1,5 @@
+= simple_form_for @user_session, url: user_sessions_path, wrapper: :inline_form do |f|
+	= f.error_notification
+	= f.input :username, placeholder: 'Username'
+	= f.input :password, placeholder: 'Password'
+	= f.button :submit, value: 'Login'

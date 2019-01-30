@@ -1,0 +1,6 @@
+= simple_form_for @document, url: document_index_path, wrapper: :vertical_form, html: { class: 'form-group' } do |f|
+	=f.select :category_id, Category.all.map { |c| [c.name, c.id] }, include_blank: false
+	=f.input :document, as: :file
+	= f.button :submit
+= flash[:notice]
+= flash[:alert]
