@@ -1,26 +1,31 @@
 class BillsController < ApplicationController
   before_action :find_bill, except: :create
+
   def index
     bills = Bill.all
-    render :json => create_result(bills, 200)
+    service = BillService.new
+      result = service.serialize_bills bills
+    render :json => create_result(result, 200)
   end
 
   def create
     @bill = Bill.new(permitted_params)
     begin
-      bill.save!
+      @bill.save!
       result = create_result(@bill, 201, 'Bill created Successfully')
     rescue => exception
-      result = create_result(@bill, 400, 'Bill create failed')
+      result = create_result(@bill, 400, "Bill create failed, error: #{exception.message}")
     end
     render :json => result
   end
 
   def show
     if @bill
-      render :json => create_result(@bill, 200, '')
+      service = BillService.new
+      result = service.serialize_bill @bill
+      render :json => create_result(result, 200, '')
     else
-      render :json => create_result(@bill, 404, 'Bill Not Found')
+      render :json => create_result(nil, 404, 'Bill Not Found')
     end
   end
 
