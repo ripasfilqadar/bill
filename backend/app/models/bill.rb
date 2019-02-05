@@ -5,7 +5,7 @@ class Bill < ApplicationRecord
     entertainment: 3
   }
   validates_presence_of :name, :tax_code, :price
-  validates :price, numericality: { only_integer: true, greater_than: 10 }
+  validates :price, numericality: { only_integer: true, greater_than: 0 }
 
   attr_accessor :tax_code_type
 

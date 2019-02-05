@@ -1,0 +1,2 @@
+module BillType
+end

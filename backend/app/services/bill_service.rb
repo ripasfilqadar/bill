@@ -1,7 +1,7 @@
 
   class BillService
     def serialize_bill(bill)
-      bill.tax_code_type = bill.tax_code.camelize.constantize.new bill
+      bill.tax_code_type = "BillType::#{bill.tax_code.camelize}".constantize.new bill
       {
         id: bill.id,
         name: bill.name,
@@ -33,61 +33,4 @@
       }
     end
 
-  end
-
-  class Food
-    def initialize(bill)
-      @bill = bill
-      @type = 'Food & Beverage'
-    end
-
-    def tax
-      @bill.price / 10
-    end
-
-    def refundable
-      true
-    end
-
-    def type
-      @type
-    end
-  end
-
-  class Tobacco
-    def initialize(bill)
-      @bill = bill
-      @type = 'Tobacco'
-    end
-
-    def tax
-      (@bill.price*0.02) + 10
-    end
-
-    def refundable
-      false
-    end
-
-    def type
-      @type
-    end
-  end
-
-  class Entertainment
-    def initialize(bill)
-      @bill = bill
-      @type = 'Entertainment'
-    end
-
-    def tax
-      (@bill.price < 100) ? 0 : (@bill.price - 100)/100
-    end
-
-    def refundable
-      false
-    end
-
-    def type
-      @type
-    end
   end
